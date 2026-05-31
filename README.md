@@ -14,6 +14,18 @@ npm start
 
 Windows 用户也可以双击 `run-site.bat`。
 
+## 下载与源码
+
+项目已同步到 GitHub，可直接下载或克隆使用：
+
+```bash
+git clone https://github.com/BlackCatAndWhiteRabbit/logic-proof-lab.git
+cd logic-proof-lab
+npm start
+```
+
+仓库地址：https://github.com/BlackCatAndWhiteRabbit/logic-proof-lab
+
 ## 支持语法
 
 - `~P`：否定
@@ -39,7 +51,7 @@ Windows 用户也可以双击 `run-site.bat`。
 - 手动逐层进入演绎子证明，使用临时假设栈
 - 证明完成后显示绿色 `Accepted` 动画
 - 保存定理时同时保存用户的证明步骤
-- 一键生成定理库中“定理调用定理”的依赖关系图
+- 一键生成定理库中“被引用定理指向后续定理”的依赖关系图
 - 可视化展示 MP 推理依赖图
 - 内置 `A -> A` 示例证明
 
