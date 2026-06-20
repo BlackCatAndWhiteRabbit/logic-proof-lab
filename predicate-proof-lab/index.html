@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>谓词逻辑证明实验室</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="acceptedToast" class="accepted-toast" aria-live="polite">Accepted</div>
+
+    <div class="app-shell compact-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">FL</div>
+          <div>
+            <h1>谓词逻辑证明实验室</h1>
+            <p>Hilbert 公理系统 · MP / UG · 演绎定理</p>
+          </div>
+        </div>
+
+        <section class="panel theorem-target">
+          <div class="panel-heading">
+            <h2>目标定理</h2>
+            <span id="targetStatus" class="status-pill neutral">待开始</span>
+          </div>
+          <label for="targetInput">输入要证明的目标定理</label>
+          <div class="inline-control">
+            <input id="targetInput" placeholder="例如：@x P(x) -> P(a)" spellcheck="false" />
+            <button id="setTargetBtn" class="primary-button">设为目标</button>
+          </div>
+          <p id="targetPreview" class="formula-preview"></p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>演绎子证明</h2>
+          </div>
+          <div id="deductionStack" class="deduction-stack"></div>
+          <div class="stack-actions">
+            <button id="enterDeductionBtn" class="secondary-button">进入一层演绎</button>
+            <button id="exitDeductionBtn" class="ghost-button">撤销一层</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>公理与规则</h2>
+          </div>
+          <ol class="axiom-list">
+            <li><code>A -> (B -> A)</code></li>
+            <li><code>(A -> (B -> C)) -> ((A -> B) -> (A -> C))</code></li>
+            <li><code>(~B -> ~A) -> (A -> B)</code></li>
+            <li><code>@x A -> A[x := t]</code></li>
+            <li><code>@x (A -> B) -> (A -> @x B)</code></li>
+          </ol>
+          <div class="rule-card">
+            <strong>MP 规则</strong>
+            <span>若已有 <code>A</code> 与 <code>A -> B</code>，则可推出 <code>B</code>。</span>
+          </div>
+          <div class="rule-card">
+            <strong>UG 规则</strong>
+            <span>若已有 <code>A</code>，且 <code>x</code> 不在当前假设中自由出现，则可推出 <code>@x A</code>。</span>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section class="proof-builder">
+          <div class="toolbar">
+            <div>
+              <h2>证明步骤</h2>
+              <p>每一步来自公理实例、临时假设、MP、UG 或定理库。</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="loadDemoBtn" class="secondary-button">载入 A4 示例</button>
+              <button id="resetProofBtn" class="ghost-button">清空</button>
+            </div>
+          </div>
+
+          <div class="step-composer">
+            <div class="input-row">
+              <label id="formulaInputLabel" for="formulaInput">新步骤公式</label>
+              <input id="formulaInput" placeholder="例如：@x P(x) -> P(a)" spellcheck="false" />
+            </div>
+            <div class="mode-row" role="radiogroup" aria-label="推理来源">
+              <label><input type="radio" name="sourceMode" value="axiom" checked /> 公理实例</label>
+              <label><input type="radio" name="sourceMode" value="premise" /> 临时假设</label>
+              <label><input type="radio" name="sourceMode" value="mp" /> MP 推理</label>
+              <label><input type="radio" name="sourceMode" value="ug" /> UG 推理</label>
+              <label><input type="radio" name="sourceMode" value="theorem" /> 已证定理</label>
+            </div>
+            <div id="premiseControls" class="theorem-controls is-hidden">
+              <label for="premiseSelect">选择临时假设</label>
+              <select id="premiseSelect"></select>
+            </div>
+            <div id="mpControls" class="mp-controls is-hidden">
+              <label>前提 A <input id="mpPremiseInput" type="number" min="1" placeholder="步骤号" /></label>
+              <label>蕴含 A -> B <input id="mpImplicationInput" type="number" min="1" placeholder="步骤号" /></label>
+            </div>
+            <div id="ugControls" class="mp-controls is-hidden">
+              <label>来源步骤 <input id="ugStepInput" type="number" min="1" placeholder="步骤号" /></label>
+              <label>量词变量 <input id="ugVariableInput" placeholder="x" spellcheck="false" /></label>
+            </div>
+            <div id="theoremControls" class="theorem-controls is-hidden">
+              <label for="theoremSelect">选择可复用定理</label>
+              <select id="theoremSelect"></select>
+              <div id="theoremPremiseControls" class="theorem-premise-controls"></div>
+            </div>
+            <div class="composer-actions">
+              <button id="addStepBtn" class="primary-button">添加步骤</button>
+              <button id="checkCurrentBtn" class="secondary-button">检查当前输入</button>
+            </div>
+            <p id="composerMessage" class="message-line"></p>
+          </div>
+
+          <div class="proof-table-wrap">
+            <table class="proof-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>公式</th>
+                  <th>来源</th>
+                  <th>说明</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="proofBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="visual-area">
+          <div class="visual-header">
+            <div>
+              <h2>证明结构图</h2>
+              <p>箭头表示 MP、UG 和定理调用依赖。</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="saveTheoremBtn" class="primary-button" disabled>保存为定理</button>
+            </div>
+          </div>
+          <div id="proofGraph" class="proof-graph"></div>
+        </section>
+
+        <section id="dependencyGraphSection" class="visual-area dependency-section is-hidden">
+          <div class="visual-header">
+            <div>
+              <h2>定理库依赖图</h2>
+              <p>箭头表示当前定理的证明中调用了另一个已证定理。</p>
+            </div>
+          </div>
+          <div id="theoremDependencyGraph" class="dependency-graph"></div>
+        </section>
+      </main>
+
+      <aside class="library">
+        <section class="panel library-panel">
+          <div class="panel-heading">
+            <h2>定理库</h2>
+            <div class="toolbar-actions">
+              <button id="dependencyGraphBtn" class="secondary-button">依赖图</button>
+              <button id="clearLibraryBtn" class="ghost-button">清空库</button>
+            </div>
+          </div>
+          <div id="theoremLibrary" class="library-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>公式语法</h2>
+          </div>
+          <ul class="syntax-list">
+            <li><code>@x A</code> 表示全称量词</li>
+            <li><code>?x A</code> 表示存在量词</li>
+            <li><code>$\forall x P(x) \to Q(x)$</code> 这类 Markdown/LaTeX 输入会自动转换</li>
+            <li><code>P(x,y,z,w)</code> 表示四元谓词</li>
+            <li><code>A | B</code> 自动展开为 <code>~A -> B</code></li>
+            <li><code>A & B</code> 自动展开为 <code>~(A -> ~B)</code></li>
+            <li>暂不支持等词和函词</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <template id="emptyProofTemplate">
+      <tr>
+        <td colspan="5" class="empty-state">还没有证明步骤。可以先添加公理实例，或进入演绎子证明并添加临时假设。</td>
+      </tr>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
