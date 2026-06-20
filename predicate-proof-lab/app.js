@@ -157,14 +157,14 @@ class Parser {
       return { type: "not", value: this.parsePrefix() };
     }
     if (this.match("@")) {
-      const variable = this.consumeIdentifier("全称量词后需要变量名");
-      this.match(".");
-      return { type: "forall", variable, body: this.parsePrefix() };
+      const variable = this.consumeQuantifierVariable("全称量词后需要变量名");
+      const hasDot = this.match(".");
+      return { type: "forall", variable, body: hasDot ? this.parseImplication() : this.parsePrefix() };
     }
     if (this.match("?")) {
-      const variable = this.consumeIdentifier("存在量词后需要变量名");
-      this.match(".");
-      return { type: "exists", variable, body: this.parsePrefix() };
+      const variable = this.consumeQuantifierVariable("存在量词后需要变量名");
+      const hasDot = this.match(".");
+      return { type: "exists", variable, body: hasDot ? this.parseImplication() : this.parsePrefix() };
     }
     return this.parsePrimary();
   }
@@ -214,6 +214,19 @@ class Parser {
       throw new Error(message);
     }
     return token.value;
+  }
+
+  consumeQuantifierVariable(message) {
+    const token = this.current();
+    if (token.type !== "id") {
+      throw new Error(message);
+    }
+    if (/^[a-z][A-Z]/.test(token.value)) {
+      const variable = token.value[0];
+      token.value = token.value.slice(1);
+      return variable;
+    }
+    return this.consumeIdentifier(message);
   }
 }
 
@@ -503,7 +516,8 @@ function formatFormula(node, parentPrecedence = 0, side = "") {
     text = `~${inner}`;
   } else if (node.type === "forall" || node.type === "exists") {
     const symbol = node.type === "forall" ? "@" : "?";
-    const body = formatFormula(node.body, precedence(node), "right");
+    const bodyPrecedence = node.body && node.body.type === "implies" ? 0 : precedence(node);
+    const body = formatFormula(node.body, bodyPrecedence, "right");
     text = `${symbol}${node.variable} ${body}`;
   } else {
     const op = node.type === "implies" ? "->" : node.type === "and" ? "&" : "|";
@@ -514,7 +528,8 @@ function formatFormula(node, parentPrecedence = 0, side = "") {
   }
   const needsPrecedenceParens = precedence(node) < parentPrecedence;
   const needsImplicationParens = node.type === "implies" && parentPrecedence === precedence(node);
-  return needsPrecedenceParens || needsImplicationParens ? `(${text})` : text;
+  const needsRightCompositeParens = side === "right" && parentPrecedence === 1 && (node.type === "or" || node.type === "and");
+  return needsPrecedenceParens || needsImplicationParens || needsRightCompositeParens ? `(${text})` : text;
 }
 
 function astEquals(a, b) {
@@ -560,7 +575,7 @@ function forallAst(variable, body) {
 }
 
 function isFormulaMeta(node) {
-  return node.type === "pred" && node.args.length === 0 && /^[A-Z]$/.test(node.name);
+  return node.type === "pred" && node.args.length === 0 && /^[A-Z][A-Za-z0-9_]*$/.test(node.name);
 }
 
 function isPredicateMetaName(name) {
@@ -1308,7 +1323,7 @@ function buildTheoremMarkdown(rootId) {
     const theorem = idToTheorem.get(id);
     if (!theorem) continue;
     const isRoot = id === rootId;
-    const title = isRoot ? `定理：${formulaMarkdown(theorem.ast, theorem.formula)}` : `引理${lemmaNumbers.get(id)}：${formulaMarkdown(theorem.ast, theorem.formula)}`;
+    const title = isRoot ? `定理：${theoremStatementMarkdown(theorem)}` : `引理${lemmaNumbers.get(id)}：${theoremStatementMarkdown(theorem)}`;
     const directLemmaRefs = getDirectLemmaReferences(theorem, lemmaNumbers, rootId);
     const deductionExport = getDeductionExport(theorem);
     const lines = [title];
@@ -1400,6 +1415,15 @@ function getExportStepSource(step, lemmaNumbers, rootId) {
   return getSourceText(step.mode);
 }
 
+function theoremStatementMarkdown(theorem) {
+  const premises = theorem.premises || [];
+  if (premises.length && theorem.ast) {
+    const premiseText = premises.map((premise) => formatFormulaLatex(premise.ast)).join(", ");
+    return inlineMath(`${premiseText} \\vdash ${formatFormulaLatex(theorem.ast)}`);
+  }
+  return formulaMarkdown(theorem.ast, theorem.formula);
+}
+
 function formulaMarkdown(ast, fallbackFormula = "") {
   let formulaAst = ast;
   if (!formulaAst && fallbackFormula) {
@@ -1425,7 +1449,8 @@ function formatFormulaLatex(node, parentPrecedence = 0, side = "") {
     text = `\\neg ${inner}`;
   } else if (node.type === "forall" || node.type === "exists") {
     const symbol = node.type === "forall" ? "\\forall" : "\\exists";
-    const body = formatFormulaLatex(node.body, precedence(node), "right");
+    const bodyPrecedence = node.body && node.body.type === "implies" ? 0 : precedence(node);
+    const body = formatFormulaLatex(node.body, bodyPrecedence, "right");
     text = `${symbol} ${latexIdentifier(node.variable)} ${body}`;
   } else {
     const op = node.type === "implies" ? "\\to" : node.type === "and" ? "\\land" : "\\lor";
@@ -1436,7 +1461,8 @@ function formatFormulaLatex(node, parentPrecedence = 0, side = "") {
   }
   const needsPrecedenceParens = precedence(node) < parentPrecedence;
   const needsImplicationParens = node.type === "implies" && parentPrecedence === precedence(node);
-  return needsPrecedenceParens || needsImplicationParens ? `(${text})` : text;
+  const needsRightCompositeParens = side === "right" && parentPrecedence === 1 && (node.type === "or" || node.type === "and");
+  return needsPrecedenceParens || needsImplicationParens || needsRightCompositeParens ? `(${text})` : text;
 }
 
 function latexIdentifier(value) {
@@ -1500,7 +1526,13 @@ function getFixedPremiseCount() {
 }
 
 function persistTheorems() {
-  const payload = state.theorems.map((item) => ({
+  const payload = serializeTheorems(state.theorems);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  persistTheoremsToFile(payload);
+}
+
+function serializeTheorems(theorems) {
+  return theorems.map((item) => ({
     id: item.id,
     ast: item.ast,
     premises: item.premises || [],
@@ -1512,7 +1544,6 @@ function persistTheorems() {
     dependencies: item.dependencies || collectProofDependencies(item.proofSteps || []),
     createdAt: item.createdAt,
   }));
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
 }
 
 function loadTheorems() {
@@ -1522,7 +1553,17 @@ function loadTheorems() {
       state.theorems = [];
       return;
     }
-    state.theorems = JSON.parse(raw).map((item) => ({
+    state.theorems = normalizeTheorems(JSON.parse(raw));
+  } catch {
+    state.theorems = [];
+  }
+}
+
+function normalizeTheorems(items) {
+  if (!Array.isArray(items)) return [];
+  return items
+    .filter((item) => item && item.ast)
+    .map((item) => ({
       ...item,
       ast: item.ast,
       premises: (item.premises || []).map((premise) => ({
@@ -1538,8 +1579,44 @@ function loadTheorems() {
           ? `${item.premises.map((premise) => premise.formula || formatFormula(premise.ast)).join(", ")} => ${formatFormula(item.ast)}`
           : formatFormula(item.ast)),
     }));
+}
+
+async function loadTheoremsFromFile() {
+  try {
+    const response = await fetch("./api/theorems", { cache: "no-store" });
+    if (!response.ok) return false;
+    const fileTheorems = normalizeTheorems(await response.json());
+    const before = state.theorems.length;
+    mergeTheorems(fileTheorems);
+    if (state.theorems.length !== before) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(serializeTheorems(state.theorems)));
+      render();
+      persistTheoremsToFile(serializeTheorems(state.theorems));
+    }
+    return true;
   } catch {
-    state.theorems = [];
+    return false;
+  }
+}
+
+function mergeTheorems(incoming) {
+  for (const theorem of incoming) {
+    const exists = state.theorems.some((item) => item.id === theorem.id || (astEquals(item.ast, theorem.ast) && premiseListsEqual(item.premises || [], theorem.premises || [])));
+    if (!exists) {
+      state.theorems.push(theorem);
+    }
+  }
+}
+
+async function persistTheoremsToFile(payload = serializeTheorems(state.theorems)) {
+  try {
+    await fetch("./api/theorems", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    // Opening index.html directly has no API; localStorage remains the fallback.
   }
 }
 
@@ -2067,7 +2144,7 @@ function installEvents() {
   });
 }
 
-function boot() {
+async function boot() {
   axiomSchemas.forEach((axiom) => {
     axiom.ast = parseFormula(axiom.text);
   });
@@ -2082,6 +2159,10 @@ function boot() {
     render();
   }
   updateModeControls();
+  const loadedFromFile = await loadTheoremsFromFile();
+  if (loadedFromFile) {
+    render();
+  }
 }
 
 boot();

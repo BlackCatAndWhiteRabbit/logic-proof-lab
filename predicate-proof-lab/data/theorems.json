@@ -1,0 +1,6729 @@
+[
+  {
+    "id": "78d9b55d-483e-4e37-9c07-cccd3c78125f",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "forall",
+        "variable": "x",
+        "body": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "P",
+            "args": [
+              "x"
+            ]
+          },
+          "right": {
+            "type": "pred",
+            "name": "Q",
+            "args": [
+              "x"
+            ]
+          }
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "forall",
+          "variable": "x",
+          "body": {
+            "type": "pred",
+            "name": "P",
+            "args": [
+              "x"
+            ]
+          }
+        },
+        "right": {
+          "type": "forall",
+          "variable": "x",
+          "body": {
+            "type": "pred",
+            "name": "Q",
+            "args": [
+              "x"
+            ]
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "@x (P(x) -> Q(x)) -> (@x P(x) -> @x Q(x))",
+    "conclusionFormula": "@x (P(x) -> Q(x)) -> (@x P(x) -> @x Q(x))",
+    "title": "@x (P(x) -> Q(x)) -> (@x P(x) -> @x Q(x))",
+    "proofLength": 8,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "forall",
+          "variable": "x",
+          "body": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "P",
+              "args": [
+                "x"
+              ]
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": [
+                "x"
+              ]
+            }
+          }
+        },
+        "formula": "@x (P(x) -> Q(x))",
+        "mode": "premise",
+        "detail": "临时假设 1",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "forall",
+            "variable": "x",
+            "body": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "P",
+                "args": [
+                  "x"
+                ]
+              },
+              "right": {
+                "type": "pred",
+                "name": "Q",
+                "args": [
+                  "x"
+                ]
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "P",
+              "args": [
+                "x"
+              ]
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": [
+                "x"
+              ]
+            }
+          }
+        },
+        "formula": "@x (P(x) -> Q(x)) -> (P(x) -> Q(x))",
+        "mode": "axiom",
+        "detail": "公理 4，全称实例化：x:=x",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A4"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "P",
+            "args": [
+              "x"
+            ]
+          },
+          "right": {
+            "type": "pred",
+            "name": "Q",
+            "args": [
+              "x"
+            ]
+          }
+        },
+        "formula": "P(x) -> Q(x)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "forall",
+          "variable": "x",
+          "body": {
+            "type": "pred",
+            "name": "P",
+            "args": [
+              "x"
+            ]
+          }
+        },
+        "formula": "@x P(x)",
+        "mode": "premise",
+        "detail": "临时假设 2",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "forall",
+            "variable": "x",
+            "body": {
+              "type": "pred",
+              "name": "P",
+              "args": [
+                "x"
+              ]
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "P",
+            "args": [
+              "x"
+            ]
+          }
+        },
+        "formula": "@x P(x) -> P(x)",
+        "mode": "axiom",
+        "detail": "公理 4，全称实例化：x:=x",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A4"
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "pred",
+          "name": "P",
+          "args": [
+            "x"
+          ]
+        },
+        "formula": "P(x)",
+        "mode": "mp",
+        "detail": "由步骤 4 和步骤 5 使用 MP 得到",
+        "refs": [
+          4,
+          5
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "pred",
+          "name": "Q",
+          "args": [
+            "x"
+          ]
+        },
+        "formula": "Q(x)",
+        "mode": "mp",
+        "detail": "由步骤 6 和步骤 3 使用 MP 得到",
+        "refs": [
+          6,
+          3
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 8,
+        "ast": {
+          "type": "forall",
+          "variable": "x",
+          "body": {
+            "type": "pred",
+            "name": "Q",
+            "args": [
+              "x"
+            ]
+          }
+        },
+        "formula": "@x Q(x)",
+        "mode": "ug",
+        "detail": "由步骤 7 使用 UG，对 x 全称概括",
+        "refs": [
+          7
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [],
+    "createdAt": "2026-06-20T04:50:47.669Z"
+  },
+  {
+    "id": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      },
+      "right": {
+        "type": "pred",
+        "name": "C",
+        "args": []
+      }
+    },
+    "premises": [
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          }
+        },
+        "formula": "A -> B"
+      },
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        },
+        "formula": "B -> C"
+      }
+    ],
+    "formula": "A -> B, B -> C => A -> C",
+    "conclusionFormula": "A -> C",
+    "title": "A -> B, B -> C => A -> C",
+    "proofLength": 7,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        },
+        "formula": "B -> C",
+        "mode": "premise",
+        "detail": "临时假设 2",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "B -> C -> (A -> (B -> C))",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=B -> C, B=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          }
+        },
+        "formula": "A -> (B -> C)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "A -> (B -> C) -> (A -> B -> (A -> C))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=A, B=B, C=C",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          }
+        },
+        "formula": "A -> B -> (A -> C)",
+        "mode": "mp",
+        "detail": "由步骤 3 和步骤 4 使用 MP 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          }
+        },
+        "formula": "A -> B",
+        "mode": "premise",
+        "detail": "临时假设 1",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        },
+        "formula": "A -> C",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 6 和步骤 5 使用 MP 得到",
+        "refs": [
+          6,
+          5
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [],
+    "createdAt": "2026-06-20T06:32:26.388Z"
+  },
+  {
+    "id": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "X",
+          "args": []
+        },
+        "right": {
+          "type": "pred",
+          "name": "Y",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Z",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "X",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Z",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "Y",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(X -> Y) -> ((Z -> X) -> (Z -> Y))",
+    "conclusionFormula": "(X -> Y) -> ((Z -> X) -> (Z -> Y))",
+    "title": "(X -> Y) -> ((Z -> X) -> (Z -> Y))",
+    "proofLength": 3,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "X",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "Y",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Z",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "X",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "Y",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(X -> Y) -> (Z -> (X -> Y))",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=X -> Y, B=Z",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Z",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "X",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "Y",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Z",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "X",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Z",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "Y",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(Z -> (X -> Y)) -> ((Z -> X) -> (Z -> Y))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=Z, B=X, C=Y",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "X",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "Y",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Z",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "X",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Z",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "Y",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(X -> Y) -> ((Z -> X) -> (Z -> Y))",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa"
+    ],
+    "createdAt": "2026-06-20T06:34:20.178Z"
+  },
+  {
+    "id": "f6ddffca-ed79-43d5-9fc3-86d299f88d58",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "pred",
+        "name": "B",
+        "args": []
+      },
+      "right": {
+        "type": "pred",
+        "name": "C",
+        "args": []
+      }
+    },
+    "premises": [
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          }
+        },
+        "formula": "B -> (A -> C)"
+      },
+      {
+        "ast": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "formula": "A"
+      }
+    ],
+    "formula": "B -> (A -> C), A => B -> C",
+    "conclusionFormula": "B -> C",
+    "title": "B -> (A -> C), A => B -> C",
+    "proofLength": 7,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(B -> (A -> C)) -> ((B -> A) -> (B -> C))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=B, B=A, C=C",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "A -> (B -> A)",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=A, B=B",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "formula": "A",
+        "mode": "premise",
+        "detail": "临时假设 2",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "B -> A",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 3 和步骤 2 使用 MP 得到",
+        "refs": [
+          3,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          }
+        },
+        "formula": "B -> (A -> C)",
+        "mode": "premise",
+        "detail": "临时假设 1",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          }
+        },
+        "formula": "(B -> A) -> (B -> C)",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 5 和步骤 1 使用 MP 得到",
+        "refs": [
+          5,
+          1
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        },
+        "formula": "B -> C",
+        "mode": "mp",
+        "detail": "由步骤 4 和步骤 6 使用 MP 得到",
+        "refs": [
+          4,
+          6
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [],
+    "createdAt": "2026-06-20T06:42:10.341Z"
+  },
+  {
+    "id": "143a2914-d3ed-4b0f-999f-c79c4f637c8a",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "right": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "B",
+          "args": []
+        },
+        "right": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(A -> (B -> C)) -> (B -> (A -> C))",
+    "conclusionFormula": "(A -> (B -> C)) -> (B -> (A -> C))",
+    "title": "(A -> (B -> C)) -> (B -> (A -> C))",
+    "proofLength": 5,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(A -> (B -> C)) -> ((A -> B) -> (A -> C))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=A, B=B, C=C",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "C",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "((A -> B) -> (A -> C)) -> ((B -> (A -> B)) -> (B -> (A -> C)))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=A -> B, Y=A -> C, Z=B",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "C",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(A -> (B -> C)) -> ((B -> (A -> B)) -> (B -> (A -> C)))",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "B -> (A -> B)",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=B, B=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(A -> (B -> C)) -> (B -> (A -> C))",
+        "mode": "theorem",
+        "detail": "由定理 B -> (A -> C), A => B -> C 和步骤 3, 4 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": "f6ddffca-ed79-43d5-9fc3-86d299f88d58",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+      "f6ddffca-ed79-43d5-9fc3-86d299f88d58"
+    ],
+    "createdAt": "2026-06-20T06:48:49.230Z"
+  },
+  {
+    "id": "e6b0b653-3a53-4094-b058-23de979c60ba",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      },
+      "right": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      }
+    },
+    "premises": [],
+    "formula": "A -> A",
+    "conclusionFormula": "A -> A",
+    "title": "A -> A",
+    "proofLength": 5,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(A -> ((B -> A) -> A)) -> ((A -> (B -> A)) -> (A -> A))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=A, B=B -> A, C=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "A -> ((B -> A) -> A)",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=A, B=B -> A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "A -> (B -> A)",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=A, B=B",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(A -> (B -> A)) -> (A -> A)",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 2 和步骤 1 使用 MP 得到",
+        "refs": [
+          2,
+          1
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "A -> A",
+        "mode": "mp",
+        "detail": "由步骤 3 和步骤 4 使用 MP 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [],
+    "createdAt": "2026-06-20T07:11:11.245Z"
+  },
+  {
+    "id": "95d113d2-1df0-43cc-9a65-0337833666df",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "not",
+        "value": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "right": {
+          "type": "pred",
+          "name": "B",
+          "args": []
+        }
+      }
+    },
+    "premises": [],
+    "formula": "~A -> (A -> B)",
+    "conclusionFormula": "~A -> (A -> B)",
+    "title": "~A -> (A -> B)",
+    "proofLength": 3,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "~A -> (~B -> ~A)",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=~A, B=~B",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~B -> ~A) -> (A -> B)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=B, A=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "~A -> (A -> B)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa"
+    ],
+    "createdAt": "2026-06-20T07:13:42.308Z"
+  },
+  {
+    "id": "791dd943-058f-459c-abbc-cca3746e6b40",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "pred",
+          "name": "B",
+          "args": []
+        }
+      }
+    },
+    "premises": [],
+    "formula": "A -> (~A -> B)",
+    "conclusionFormula": "A -> (~A -> B)",
+    "title": "A -> (~A -> B)",
+    "proofLength": 3,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~A -> (A -> B)) -> (A -> (~A -> B))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> (B -> C)) -> (B -> (A -> C))，代换：A=~A, B=A, C=B",
+        "refs": [],
+        "theoremId": "143a2914-d3ed-4b0f-999f-c79c4f637c8a",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "~A -> (A -> B)",
+        "mode": "theorem",
+        "detail": "调用已证定理：~A -> (A -> B)，代换：A=A, B=B",
+        "refs": [],
+        "theoremId": "95d113d2-1df0-43cc-9a65-0337833666df",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "A -> (~A -> B)",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 2 和步骤 1 使用 MP 得到",
+        "refs": [
+          2,
+          1
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "143a2914-d3ed-4b0f-999f-c79c4f637c8a",
+      "95d113d2-1df0-43cc-9a65-0337833666df"
+    ],
+    "createdAt": "2026-06-20T07:22:01.176Z"
+  },
+  {
+    "id": "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "not",
+        "value": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        }
+      },
+      "right": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      }
+    },
+    "premises": [],
+    "formula": "~~A -> A",
+    "conclusionFormula": "~~A -> A",
+    "title": "~~A -> A",
+    "proofLength": 9,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "not",
+                    "value": {
+                      "type": "pred",
+                      "name": "A",
+                      "args": []
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "~~A -> (~~~~A -> ~~A)",
+        "mode": "axiom",
+        "detail": "公理 1，代换：A=~~A, B=~~~~A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A1"
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "not",
+                    "value": {
+                      "type": "pred",
+                      "name": "A",
+                      "args": []
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~~~~A -> ~~A) -> (~A -> ~~~A)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=~~~A, A=~A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~A -> ~~~A) -> (~~A -> A)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=A, A=~~A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "~~A -> (~A -> ~~~A)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "~~A -> (~~A -> A)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 4, 3 得到",
+        "refs": [
+          4,
+          3
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~~A -> (~~A -> A)) -> ((~~A -> ~~A) -> (~~A -> A))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=~~A, B=~~A, C=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~~A -> ~~A) -> (~~A -> A)",
+        "mode": "mp",
+        "detail": "由步骤 5 和步骤 6 使用 MP 得到",
+        "refs": [
+          5,
+          6
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 8,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "~~A -> ~~A",
+        "mode": "theorem",
+        "detail": "调用已证定理：A -> A，代换：A=~~A",
+        "refs": [],
+        "theoremId": "e6b0b653-3a53-4094-b058-23de979c60ba",
+        "axiomId": null
+      },
+      {
+        "number": 9,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "~~A -> A",
+        "mode": "mp",
+        "detail": "由步骤 8 和步骤 7 使用 MP 得到",
+        "refs": [
+          8,
+          7
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+      "e6b0b653-3a53-4094-b058-23de979c60ba"
+    ],
+    "createdAt": "2026-06-20T10:21:29.086Z"
+  },
+  {
+    "id": "03119fee-b9c6-4447-b115-f931449fad32",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      },
+      "right": {
+        "type": "not",
+        "value": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "A -> ~~A",
+    "conclusionFormula": "A -> ~~A",
+    "title": "A -> ~~A",
+    "proofLength": 3,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "~~~A -> ~A",
+        "mode": "theorem",
+        "detail": "调用已证定理：~~A -> A，代换：A=~A",
+        "refs": [],
+        "theoremId": "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~~~A -> ~A) -> (A -> ~~A)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=~~A, A=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "A -> ~~A",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "e7bbeb12-9e84-41e8-b8a2-dad99986ed86"
+    ],
+    "createdAt": "2026-06-20T10:24:32.694Z"
+  },
+  {
+    "id": "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "right": {
+          "type": "pred",
+          "name": "B",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "C",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(A -> B) -> ((B -> C) -> (A -> C))",
+    "conclusionFormula": "(A -> B) -> ((B -> C) -> (A -> C))",
+    "title": "(A -> B) -> ((B -> C) -> (A -> C))",
+    "proofLength": 3,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "C",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(B -> C) -> ((A -> B) -> (A -> C))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=B, Y=C, Z=A",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "C",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "C",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "C",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "((B -> C) -> ((A -> B) -> (A -> C))) -> ((A -> B) -> ((B -> C) -> (A -> C)))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> (B -> C)) -> (B -> (A -> C))，代换：A=B -> C, B=A -> B, C=A -> C",
+        "refs": [],
+        "theoremId": "143a2914-d3ed-4b0f-999f-c79c4f637c8a",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "C",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(A -> B) -> ((B -> C) -> (A -> C))",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+      "143a2914-d3ed-4b0f-999f-c79c4f637c8a"
+    ],
+    "createdAt": "2026-06-20T10:40:50.726Z"
+  },
+  {
+    "id": "28dbf994-be00-40b3-80a8-0df82513cc0e",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "right": {
+          "type": "pred",
+          "name": "B",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(A -> B) -> (~B -> ~A)",
+    "conclusionFormula": "(A -> B) -> (~B -> ~A)",
+    "title": "(A -> B) -> (~B -> ~A)",
+    "proofLength": 9,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "B -> ~~B",
+        "mode": "theorem",
+        "detail": "调用已证定理：A -> ~~A，代换：A=B",
+        "refs": [],
+        "theoremId": "03119fee-b9c6-4447-b115-f931449fad32",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "(B -> ~~B) -> ((A -> B) -> (A -> ~~B))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=B, Y=~~B, Z=A",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(A -> B) -> (A -> ~~B)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~~A -> A) -> ((A -> ~~B) -> (~~A -> ~~B))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> ((B -> C) -> (A -> C))，代换：A=~~A, B=A, C=~~B",
+        "refs": [],
+        "theoremId": "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "~~A -> A",
+        "mode": "theorem",
+        "detail": "调用已证定理：~~A -> A，代换：A=A",
+        "refs": [],
+        "theoremId": "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(A -> ~~B) -> (~~A -> ~~B)",
+        "mode": "mp",
+        "detail": "由步骤 5 和步骤 4 使用 MP 得到",
+        "refs": [
+          5,
+          4
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(A -> B) -> (~~A -> ~~B)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 3, 6 得到",
+        "refs": [
+          3,
+          6
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      },
+      {
+        "number": 8,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~~A -> ~~B) -> (~B -> ~A)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=~A, A=~B",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 9,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(A -> B) -> (~B -> ~A)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 7, 8 得到",
+        "refs": [
+          7,
+          8
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "03119fee-b9c6-4447-b115-f931449fad32",
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+      "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+      "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa"
+    ],
+    "createdAt": "2026-06-20T10:46:13.708Z"
+  },
+  {
+    "id": "ba49a2a5-4c62-4a79-badf-b4e3e092e419",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "R0",
+          "args": []
+        },
+        "right": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "R1",
+            "args": []
+          }
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "Q0",
+          "args": []
+        },
+        "right": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "Q1",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q0",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R0",
+            "args": []
+          }
+        },
+        "formula": "Q0 -> R0"
+      },
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q1",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R1",
+            "args": []
+          }
+        },
+        "formula": "Q1 -> R1"
+      }
+    ],
+    "formula": "Q0 -> R0, Q1 -> R1 => (R0 -> ~R1) -> (Q0 -> ~Q1)",
+    "conclusionFormula": "(R0 -> ~R1) -> (Q0 -> ~Q1)",
+    "title": "Q0 -> R0, Q1 -> R1 => (R0 -> ~R1) -> (Q0 -> ~Q1)",
+    "proofLength": 10,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q0",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R0",
+            "args": []
+          }
+        },
+        "formula": "Q0 -> R0",
+        "mode": "premise",
+        "detail": "临时假设 1",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "R0",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R1",
+              "args": []
+            }
+          }
+        },
+        "formula": "R0 -> ~R1",
+        "mode": "premise",
+        "detail": "临时假设 3",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q0",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R1",
+              "args": []
+            }
+          }
+        },
+        "formula": "Q0 -> ~R1",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "pred",
+          "name": "Q0",
+          "args": []
+        },
+        "formula": "Q0",
+        "mode": "premise",
+        "detail": "临时假设 4",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "pred",
+          "name": "R0",
+          "args": []
+        },
+        "formula": "R0",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 4 和步骤 1 使用 MP 得到",
+        "refs": [
+          4,
+          1
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "R1",
+            "args": []
+          }
+        },
+        "formula": "~R1",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 4 和步骤 3 使用 MP 得到",
+        "refs": [
+          4,
+          3
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q1",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "R1",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R1",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q1",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(Q1 -> R1) -> (~R1 -> ~Q1)",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> (~B -> ~A)，代换：A=Q1, B=R1",
+        "refs": [],
+        "theoremId": "28dbf994-be00-40b3-80a8-0df82513cc0e",
+        "axiomId": null
+      },
+      {
+        "number": 8,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q1",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R1",
+            "args": []
+          }
+        },
+        "formula": "Q1 -> R1",
+        "mode": "premise",
+        "detail": "临时假设 2",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 9,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R1",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "Q1",
+              "args": []
+            }
+          }
+        },
+        "formula": "~R1 -> ~Q1",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 8 和步骤 7 使用 MP 得到",
+        "refs": [
+          8,
+          7
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 10,
+        "ast": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "Q1",
+            "args": []
+          }
+        },
+        "formula": "~Q1",
+        "mode": "mp",
+        "detail": "由步骤 6 和步骤 9 使用 MP 得到",
+        "refs": [
+          6,
+          9
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+      "28dbf994-be00-40b3-80a8-0df82513cc0e"
+    ],
+    "createdAt": "2026-06-20T13:37:29.588Z"
+  },
+  {
+    "id": "361544df-71cc-4e3e-8376-57b1cc691293",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "Q",
+          "args": []
+        },
+        "right": {
+          "type": "pred",
+          "name": "R",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            }
+          }
+        },
+        "right": {
+          "type": "not",
+          "value": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(Q -> R) -> (~~Q -> ~~R)",
+    "conclusionFormula": "(Q -> R) -> (~~Q -> ~~R)",
+    "title": "(Q -> R) -> (~~Q -> ~~R)",
+    "proofLength": 7,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "Q",
+            "args": []
+          }
+        },
+        "formula": "~~Q -> Q",
+        "mode": "theorem",
+        "detail": "调用已证定理：~~A -> A，代换：A=Q",
+        "refs": [],
+        "theoremId": "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "R",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "R -> ~~R",
+        "mode": "theorem",
+        "detail": "调用已证定理：A -> ~~A，代换：A=R",
+        "refs": [],
+        "theoremId": "03119fee-b9c6-4447-b115-f931449fad32",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "R",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "(R -> ~~R) -> ((Q -> R) -> (Q -> ~~R))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=R, Y=~~R, Z=Q",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(Q -> R) -> (Q -> ~~R)",
+        "mode": "mp",
+        "detail": "由步骤 2 和步骤 3 使用 MP 得到",
+        "refs": [
+          2,
+          3
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "R",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "R",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~~Q -> Q) -> ((Q -> ~~R) -> (~~Q -> ~~R))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> ((B -> C) -> (A -> C))，代换：A=~~Q, B=Q, C=~~R",
+        "refs": [],
+        "theoremId": "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(Q -> ~~R) -> (~~Q -> ~~R)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 5 使用 MP 得到",
+        "refs": [
+          1,
+          5
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(Q -> R) -> (~~Q -> ~~R)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 4, 6 得到",
+        "refs": [
+          4,
+          6
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+      "03119fee-b9c6-4447-b115-f931449fad32",
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+      "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa"
+    ],
+    "createdAt": "2026-06-20T13:47:43.725Z"
+  },
+  {
+    "id": "a26c7c62-8688-4a78-87aa-fdeb746f893f",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "Q",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "pred",
+          "name": "R",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "R",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "pred",
+          "name": "Q",
+          "args": []
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(~Q -> R) -> (~R -> Q)",
+    "conclusionFormula": "(~Q -> R) -> (~R -> Q)",
+    "title": "(~Q -> R) -> (~R -> Q)",
+    "proofLength": 7,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~Q -> R) -> (~~~Q -> ~~R)",
+        "mode": "theorem",
+        "detail": "调用已证定理：(Q -> R) -> (~~Q -> ~~R)，代换：Q=~Q, R=R",
+        "refs": [],
+        "theoremId": "361544df-71cc-4e3e-8376-57b1cc691293",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~~~Q -> ~~R) -> (~R -> ~~Q)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=~~Q, A=~R",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~Q -> R) -> (~R -> ~~Q)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "Q",
+            "args": []
+          }
+        },
+        "formula": "~~Q -> Q",
+        "mode": "theorem",
+        "detail": "调用已证定理：~~A -> A，代换：A=Q",
+        "refs": [],
+        "theoremId": "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~~Q -> Q) -> ((~R -> ~~Q) -> (~R -> Q))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=~~Q, Y=Q, Z=~R",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~R -> ~~Q) -> (~R -> Q)",
+        "mode": "mp",
+        "detail": "由步骤 4 和步骤 5 使用 MP 得到",
+        "refs": [
+          4,
+          5
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~Q -> R) -> (~R -> Q)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 3, 6 得到",
+        "refs": [
+          3,
+          6
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "361544df-71cc-4e3e-8376-57b1cc691293",
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+      "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84"
+    ],
+    "createdAt": "2026-06-20T13:53:27.766Z"
+  },
+  {
+    "id": "655b3ba7-d5d0-43ff-886c-0740aa8d0553",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "not",
+        "value": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        }
+      },
+      "right": {
+        "type": "not",
+        "value": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "~(~A -> ~~B) -> ~(~A -> B)",
+    "conclusionFormula": "~(~A -> ~~B) -> ~(~A -> B)",
+    "title": "~(~A -> ~~B) -> ~(~A -> B)",
+    "proofLength": 5,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "B -> ~~B",
+        "mode": "theorem",
+        "detail": "调用已证定理：A -> ~~A，代换：A=B",
+        "refs": [],
+        "theoremId": "03119fee-b9c6-4447-b115-f931449fad32",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "(B -> ~~B) -> ((~A -> B) -> (~A -> ~~B))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=B, Y=~~B, Z=~A",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~A -> B) -> (~A -> ~~B)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "implies",
+                "left": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                },
+                "right": {
+                  "type": "not",
+                  "value": {
+                    "type": "not",
+                    "value": {
+                      "type": "pred",
+                      "name": "B",
+                      "args": []
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "implies",
+                "left": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "A",
+                    "args": []
+                  }
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "((~A -> B) -> (~A -> ~~B)) -> (~(~A -> ~~B) -> ~(~A -> B))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> (~B -> ~A)，代换：A=~A -> B, B=~A -> ~~B",
+        "refs": [],
+        "theoremId": "28dbf994-be00-40b3-80a8-0df82513cc0e",
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "~(~A -> ~~B) -> ~(~A -> B)",
+        "mode": "mp",
+        "detail": "由步骤 3 和步骤 4 使用 MP 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "03119fee-b9c6-4447-b115-f931449fad32",
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+      "28dbf994-be00-40b3-80a8-0df82513cc0e"
+    ],
+    "createdAt": "2026-06-20T13:55:55.302Z"
+  },
+  {
+    "id": "be0150e5-b53f-4abd-947d-fde58b753eac",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "not",
+        "value": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          }
+        }
+      },
+      "right": {
+        "type": "not",
+        "value": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R",
+              "args": []
+            }
+          }
+        }
+      }
+    },
+    "premises": [],
+    "formula": "~(~~Q -> ~R) -> ~(Q -> ~R)",
+    "conclusionFormula": "~(~~Q -> ~R) -> ~(Q -> ~R)",
+    "title": "~(~~Q -> ~R) -> ~(Q -> ~R)",
+    "proofLength": 5,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "Q",
+            "args": []
+          }
+        },
+        "formula": "~~Q -> Q",
+        "mode": "theorem",
+        "detail": "调用已证定理：~~A -> A，代换：A=Q",
+        "refs": [],
+        "theoremId": "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~~Q -> Q) -> ((Q -> ~R) -> (~~Q -> ~R))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> ((B -> C) -> (A -> C))，代换：A=~~Q, B=Q, C=~R",
+        "refs": [],
+        "theoremId": "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(Q -> ~R) -> (~~Q -> ~R)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "implies",
+                "left": {
+                  "type": "not",
+                  "value": {
+                    "type": "not",
+                    "value": {
+                      "type": "pred",
+                      "name": "Q",
+                      "args": []
+                    }
+                  }
+                },
+                "right": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "R",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "Q",
+                  "args": []
+                },
+                "right": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "R",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "((Q -> ~R) -> (~~Q -> ~R)) -> (~(~~Q -> ~R) -> ~(Q -> ~R))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> (~B -> ~A)，代换：A=Q -> ~R, B=~~Q -> ~R",
+        "refs": [],
+        "theoremId": "28dbf994-be00-40b3-80a8-0df82513cc0e",
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q",
+                    "args": []
+                  }
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "~(~~Q -> ~R) -> ~(Q -> ~R)",
+        "mode": "mp",
+        "detail": "由步骤 3 和步骤 4 使用 MP 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "e7bbeb12-9e84-41e8-b8a2-dad99986ed86",
+      "d3c71299-6f03-4583-97c9-9a195ee0dabf",
+      "28dbf994-be00-40b3-80a8-0df82513cc0e"
+    ],
+    "createdAt": "2026-06-20T13:58:06.872Z"
+  },
+  {
+    "id": "17412f9f-81e1-4a3f-a0ff-7585f292210e",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "not",
+        "value": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q0",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "Q1",
+              "args": []
+            }
+          }
+        }
+      },
+      "right": {
+        "type": "not",
+        "value": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "R0",
+            "args": []
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "R1",
+              "args": []
+            }
+          }
+        }
+      }
+    },
+    "premises": [
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q0",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R0",
+            "args": []
+          }
+        },
+        "formula": "Q0 -> R0"
+      },
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q1",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R1",
+            "args": []
+          }
+        },
+        "formula": "Q1 -> R1"
+      }
+    ],
+    "formula": "Q0 -> R0, Q1 -> R1 => ~(Q0 -> ~Q1) -> ~(R0 -> ~R1)",
+    "conclusionFormula": "~(Q0 -> ~Q1) -> ~(R0 -> ~R1)",
+    "title": "Q0 -> R0, Q1 -> R1 => ~(Q0 -> ~Q1) -> ~(R0 -> ~R1)",
+    "proofLength": 5,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q0",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R0",
+            "args": []
+          }
+        },
+        "formula": "Q0 -> R0",
+        "mode": "premise",
+        "detail": "临时假设 1",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "Q1",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "R1",
+            "args": []
+          }
+        },
+        "formula": "Q1 -> R1",
+        "mode": "premise",
+        "detail": "临时假设 2",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "R0",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "R1",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "Q0",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "Q1",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(R0 -> ~R1) -> (Q0 -> ~Q1)",
+        "mode": "theorem",
+        "detail": "由定理 Q0 -> R0, Q1 -> R1 => (R0 -> ~R1) -> (Q0 -> ~Q1) 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "ba49a2a5-4c62-4a79-badf-b4e3e092e419",
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "R0",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R1",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q0",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q1",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "Q0",
+                  "args": []
+                },
+                "right": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "Q1",
+                    "args": []
+                  }
+                }
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "implies",
+                "left": {
+                  "type": "pred",
+                  "name": "R0",
+                  "args": []
+                },
+                "right": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "R1",
+                    "args": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "formula": "((R0 -> ~R1) -> (Q0 -> ~Q1)) -> (~(Q0 -> ~Q1) -> ~(R0 -> ~R1))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(A -> B) -> (~B -> ~A)，代换：A=R0 -> ~R1, B=Q0 -> ~Q1",
+        "refs": [],
+        "theoremId": "28dbf994-be00-40b3-80a8-0df82513cc0e",
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "Q0",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "Q1",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "R0",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "R1",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "~(Q0 -> ~Q1) -> ~(R0 -> ~R1)",
+        "mode": "mp",
+        "detail": "由步骤 3 和步骤 4 使用 MP 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "ba49a2a5-4c62-4a79-badf-b4e3e092e419",
+      "28dbf994-be00-40b3-80a8-0df82513cc0e"
+    ],
+    "createdAt": "2026-06-20T14:47:41.100Z"
+  },
+  {
+    "id": "1fc8ea91-9f71-4ade-a582-d76a268cd0a5",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "implies",
+        "left": {
+          "type": "pred",
+          "name": "B",
+          "args": []
+        },
+        "right": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        }
+      }
+    },
+    "premises": [],
+    "formula": "(~A -> A) -> (B -> A)",
+    "conclusionFormula": "(~A -> A) -> (B -> A)",
+    "title": "(~A -> A) -> (B -> A)",
+    "proofLength": 5,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "~A -> (A -> ~B)",
+        "mode": "theorem",
+        "detail": "调用已证定理：~A -> (A -> B)，代换：A=A, B=~B",
+        "refs": [],
+        "theoremId": "95d113d2-1df0-43cc-9a65-0337833666df",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(~A -> (A -> ~B)) -> ((~A -> A) -> (~A -> ~B))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=~A, B=A, C=~B",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~A -> A) -> (~A -> ~B)",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~A -> ~B) -> (B -> A)",
+        "mode": "axiom",
+        "detail": "公理 3，代换：B=A, A=B",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A3"
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~A -> A) -> (B -> A)",
+        "mode": "theorem",
+        "detail": "由定理 A -> B, B -> C => A -> C 和步骤 3, 4 得到",
+        "refs": [
+          3,
+          4
+        ],
+        "theoremId": "c95fdae4-2ba1-45df-94cb-c3f8761078aa",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "95d113d2-1df0-43cc-9a65-0337833666df",
+      "c95fdae4-2ba1-45df-94cb-c3f8761078aa"
+    ],
+    "createdAt": "2026-06-20T15:43:42.495Z"
+  },
+  {
+    "id": "b97a4677-5819-4ad3-ad5b-0484c64f4a38",
+    "ast": {
+      "type": "implies",
+      "left": {
+        "type": "implies",
+        "left": {
+          "type": "not",
+          "value": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "right": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        }
+      },
+      "right": {
+        "type": "pred",
+        "name": "A",
+        "args": []
+      }
+    },
+    "premises": [],
+    "formula": "(~A -> A) -> A",
+    "conclusionFormula": "(~A -> A) -> A",
+    "title": "(~A -> A) -> A",
+    "proofLength": 3,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~A -> A) -> ((A -> A) -> A)",
+        "mode": "theorem",
+        "detail": "调用已证定理：(~A -> A) -> (B -> A)，代换：A=A, B=A -> A",
+        "refs": [],
+        "theoremId": "1fc8ea91-9f71-4ade-a582-d76a268cd0a5",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "A -> A",
+        "mode": "theorem",
+        "detail": "调用已证定理：A -> A，代换：A=A",
+        "refs": [],
+        "theoremId": "e6b0b653-3a53-4094-b058-23de979c60ba",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "(~A -> A) -> A",
+        "mode": "theorem",
+        "detail": "由定理 B -> (A -> C), A => B -> C 和步骤 1, 2 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": "f6ddffca-ed79-43d5-9fc3-86d299f88d58",
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "1fc8ea91-9f71-4ade-a582-d76a268cd0a5",
+      "e6b0b653-3a53-4094-b058-23de979c60ba",
+      "f6ddffca-ed79-43d5-9fc3-86d299f88d58"
+    ],
+    "createdAt": "2026-06-20T15:51:31.933Z"
+  },
+  {
+    "id": "7c191484-76b5-42c1-8305-78fc58dd1511",
+    "ast": {
+      "type": "pred",
+      "name": "A",
+      "args": []
+    },
+    "premises": [
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          }
+        },
+        "formula": "~A -> B"
+      },
+      {
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "~A -> ~B"
+      }
+    ],
+    "formula": "~A -> B, ~A -> ~B => A",
+    "conclusionFormula": "A",
+    "title": "~A -> B, ~A -> ~B => A",
+    "proofLength": 11,
+    "proofSteps": [
+      {
+        "number": 1,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "B -> (~B -> A)",
+        "mode": "theorem",
+        "detail": "调用已证定理：A -> (~A -> B)，代换：A=B, B=A",
+        "refs": [],
+        "theoremId": "791dd943-058f-459c-abbc-cca3746e6b40",
+        "axiomId": null
+      },
+      {
+        "number": 2,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "implies",
+                "left": {
+                  "type": "not",
+                  "value": {
+                    "type": "pred",
+                    "name": "B",
+                    "args": []
+                  }
+                },
+                "right": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              }
+            }
+          }
+        },
+        "formula": "(B -> (~B -> A)) -> ((~A -> B) -> (~A -> (~B -> A)))",
+        "mode": "theorem",
+        "detail": "调用已证定理：(X -> Y) -> ((Z -> X) -> (Z -> Y))，代换：X=B, Y=~B -> A, Z=~A",
+        "refs": [],
+        "theoremId": "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+        "axiomId": null
+      },
+      {
+        "number": 3,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~A -> B) -> (~A -> (~B -> A))",
+        "mode": "mp",
+        "detail": "由步骤 1 和步骤 2 使用 MP 得到",
+        "refs": [
+          1,
+          2
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 4,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "B",
+            "args": []
+          }
+        },
+        "formula": "~A -> B",
+        "mode": "premise",
+        "detail": "临时假设 1",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 5,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "~A -> (~B -> A)",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 4 和步骤 3 使用 MP 得到",
+        "refs": [
+          4,
+          3
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 6,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "B",
+                  "args": []
+                }
+              }
+            },
+            "right": {
+              "type": "implies",
+              "left": {
+                "type": "not",
+                "value": {
+                  "type": "pred",
+                  "name": "A",
+                  "args": []
+                }
+              },
+              "right": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            }
+          }
+        },
+        "formula": "(~A -> (~B -> A)) -> ((~A -> ~B) -> (~A -> A))",
+        "mode": "axiom",
+        "detail": "公理 2，代换：A=~A, B=~B, C=A",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": "A2"
+      },
+      {
+        "number": 7,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "B",
+                "args": []
+              }
+            }
+          },
+          "right": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          }
+        },
+        "formula": "(~A -> ~B) -> (~A -> A)",
+        "mode": "mp",
+        "detail": "由步骤 5 和步骤 6 使用 MP 得到",
+        "refs": [
+          5,
+          6
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 8,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "B",
+              "args": []
+            }
+          }
+        },
+        "formula": "~A -> ~B",
+        "mode": "premise",
+        "detail": "临时假设 2",
+        "refs": [],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 9,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "not",
+            "value": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "~A -> A",
+        "mode": "mp",
+        "detail": "已自动识别两个步骤的角色，由步骤 8 和步骤 7 使用 MP 得到",
+        "refs": [
+          8,
+          7
+        ],
+        "theoremId": null,
+        "axiomId": null
+      },
+      {
+        "number": 10,
+        "ast": {
+          "type": "implies",
+          "left": {
+            "type": "implies",
+            "left": {
+              "type": "not",
+              "value": {
+                "type": "pred",
+                "name": "A",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "pred",
+              "name": "A",
+              "args": []
+            }
+          },
+          "right": {
+            "type": "pred",
+            "name": "A",
+            "args": []
+          }
+        },
+        "formula": "(~A -> A) -> A",
+        "mode": "theorem",
+        "detail": "调用已证定理：(~A -> A) -> A，代换：A=A",
+        "refs": [],
+        "theoremId": "b97a4677-5819-4ad3-ad5b-0484c64f4a38",
+        "axiomId": null
+      },
+      {
+        "number": 11,
+        "ast": {
+          "type": "pred",
+          "name": "A",
+          "args": []
+        },
+        "formula": "A",
+        "mode": "mp",
+        "detail": "由步骤 9 和步骤 10 使用 MP 得到",
+        "refs": [
+          9,
+          10
+        ],
+        "theoremId": null,
+        "axiomId": null
+      }
+    ],
+    "dependencies": [
+      "791dd943-058f-459c-abbc-cca3746e6b40",
+      "54460afc-17ee-43bb-8bbc-334ac5d81e84",
+      "b97a4677-5819-4ad3-ad5b-0484c64f4a38"
+    ],
+    "createdAt": "2026-06-20T16:04:22.755Z"
+  }
+]

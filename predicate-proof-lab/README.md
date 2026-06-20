@@ -23,6 +23,7 @@ npm start
 - `A & B`、`A | B`：作为定义缩写自动展开
 - `@x A`：全称量词，也兼容 `∀x A`
 - `?x A`：存在量词，也兼容 `∃x A`，作为 `~@x ~A` 的定义缩写
+- 支持紧贴写法 `∃xP(x)`；如果量词要作用到复合公式，请写括号，例如 `∃x(P(x)∨Q(x))`
 - 支持 Markdown/LaTeX 数学输入，例如 `$\forall x (P(x) \to Q(x))$`
 - `P(x)`、`R(x,y,z,w)`：任意元数谓词
 - `P`：零元谓词或公式模式变量
@@ -52,3 +53,14 @@ npm start
 ## 刷新恢复
 
 应用会分别保存定理库和当前工作区。定理库跨窗口共享；当前目标、演绎栈和已经添加的证明步骤只在当前窗口会话中保存。刷新窗口 A 会恢复窗口 A 的证明，刷新窗口 B 会恢复窗口 B 的证明，新打开的窗口保持空白。
+
+## 跨设备同步
+
+使用 `run-site.bat` 打开时，定理库会同时保存到仓库文件 `data/theorems.json`。用 GitHub Desktop 同步时：
+
+1. 在网页中保存、删除或清空定理库。
+2. GitHub Desktop 会看到 `predicate-proof-lab/data/theorems.json` 发生变化。
+3. 在 GitHub Desktop 中提交并推送。
+4. 另一台设备拉取后，用 `run-site.bat` 打开页面，定理库会自动从 `data/theorems.json` 合并加载。
+
+如果直接打开 `index.html`，浏览器无法写仓库文件，定理库仍会保存在本机浏览器中。
